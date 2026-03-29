@@ -1,0 +1,32 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'assets/css/user.css' %}">
+<table>
+  <caption>Statement Summary</caption>
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col">Type</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for m in data %}
+    <tr>
+      <td data-label="Account">{{m.username}}</td>
+      <td data-label="Due Date">{{m.password}}</td>
+      <td data-label="Amount">{{m.type}}</td>
+      <td data-label="Period">
+        <button style="background-color: black; border-radius: 5px;">
+          <a style="color: white; text-decoration: none;" href="/edit?idno={{m.id}}">Edit</a>
+        </button>
+        <button style="background-color: black; border-radius: 5px;">
+          <a style="color: white; text-decoration: none;" href="/delete?idno={{m.id}}">Delete</a>
+        </button>
+      </td>
+    </tr>
+   {% endfor %}
+   
+    
+  </tbody>
+</table>

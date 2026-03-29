@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'assets/css/user.css' %}">
+<table>
+  <caption>User Details</caption>
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col">Type</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for m in data %}
+    <form method="post">
+      {% csrf_token %}
+    <tr>
+      <td data-label="Account">
+        <input type="text" value="{{m.username}}" name="usrnm">
+        <input type="text" value="{{m.id}}" name="idno" hidden>
+      </td>
+      <td data-label="Due Date"> <input type="text" value="{{m.password}}" name="psw"></td>
+      <td data-label="Amount">{{m.type}}</td>
+      <td data-label="Period">
+        <button style="background-color: black; border-radius: 5px; color: white;" type="submit">Update</button>
+      </td>
+    </tr>
+    </form>
+   {% endfor %}
+   
+    
+  </tbody>
+</table>

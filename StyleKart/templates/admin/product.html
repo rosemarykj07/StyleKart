@@ -1,0 +1,68 @@
+{% load static %}
+<div class="container">
+    <div class="mens">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{msg}}
+            <h1>Add Clothes Details</h1>
+            <textarea class="txta" type="text" placeholder="Enter Product Name" name="pname"></textarea><br><br>
+            <!-- <label for="fileInput" class="custom-file-btn">Upload Image</label>
+            <span type="file" id="fileName">No file chosen</span><br><br> -->
+            <input class="tb" type="text" placeholder="Enter Product Description" name="pdes"><br><br>
+            <input class="tb" type="number" placeholder="Product Price" name="price"><br><br>
+            <input  class="" type="file" placeholder="Enter Product Images" name="pimg"><br><br>
+            <button class="btn" type="submit">Add Item</button>
+        </form>
+    </div>
+
+    <form method="post" action="{% url 'add_to_cart' %}">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{m.id}}">
+        <button type="submit">Add to Cart</button>
+    </form>
+    
+</div>
+<style>
+    .mens{
+        width:450px;
+        height: 400px;
+        padding: 5px;;
+        border:1 px solid black;
+        border-radius: 10px;
+        background-color: aquamarine;
+        text-align: center;
+    }
+    .txta{
+        width: 90%;
+        border-radius: 8px;
+    }
+    .tb{
+        width: 90%;
+        border-radius: 10px;
+    }
+    .custom-file-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .custom-file-btn:hover {
+        background-color: #444;
+    }
+    .btn{
+        background-color: black;
+        color: white;
+        border-radius: 8px;
+    }
+    .container{
+        text-align: center;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+</style>
